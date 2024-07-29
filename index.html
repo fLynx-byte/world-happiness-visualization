@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Happiness Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="visualization-container">
+        <!-- Scene 1: World Map Overview -->
+        <div id="scene1" class="scene">
+            <h2>Global Happiness Overview</h2>
+            <div id="map"></div>
+            <p>Click on a country to see more details.</p>
+        </div>
+        <!-- Scene 2: Key Factors -->
+        <div id="scene2" class="scene">
+            <h2>Factors Influencing Happiness</h2>
+            <select id="factor-select">
+                <option value="Log GDP per capita">Log GDP per Capita</option>
+                <option value="Social support">Social Support</option>
+                <option value="Healthy life expectancy at birth">Healthy Life Expectancy</option>
+                <option value="Freedom to make life choices">Freedom</option>
+                <option value="Generosity">Generosity</option>
+                <option value="perceptions of corruption">Perceptions of Corruption</option>
+            </select>
+            <div id="scatterplot"></div>
+        </div>
+        <!-- Scene 3: Trends Over Time -->
+        <div id="scene3" class="scene">
+            <h2>Happiness Trends Over Time</h2>
+            <div id="line-chart"></div>
+            <p>Select countries to compare:</p>
+            <select id="country-select" multiple></select>
+        </div>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
