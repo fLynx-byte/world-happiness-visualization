@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Happiness Overview</title>
+    <title>Happiness Trends Over Time</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="visualization-container">
-        <h2>Global Happiness Overview</h2>
-        <div id="map"></div>
+        <h2>Happiness Trends Over Time</h2>
+        <div id="line-chart"></div>
+        <select id="country-select" multiple></select>
+        <p><a href="index.html">Back to Global Happiness Overview</a></p>
         <p><a href="factors.html">See Factors Influencing Happiness</a></p>
-        <p><a href="trends.html">See Happiness Trends Over Time</a></p>
     </div>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="script.js"></script>
     <script>
-        // Call the function to create the world map
+        // Call the function to create the line chart
         d3.csv("data/world-happiness-report.csv").then(data => {
-            createWorldMap(data);
+            createLineChart(data);
         });
     </script>
 </body>
 </html>
+
+
 

@@ -12,15 +12,14 @@ d3.csv("data/world-happiness-report.csv").then(data => {
         d['perceptions of corruption'] = +d['perceptions of corruption'];
     });
 
-    // Initialize scenes
-    createWorldMap(data);
-    createScatterPlot(data);
-    createLineChart(data);
+    // Call functions to create visualizations for each page
+    if (document.getElementById("map")) createWorldMap(data);
+    if (document.getElementById("scatterplot")) createScatterPlot(data);
+    if (document.getElementById("line-chart")) createLineChart(data);
 });
 
 // Scene 1: Global Happiness Overview
 function createWorldMap(data) {
-    // Set up SVG
     const width = 800;
     const height = 500;
     const svg = d3.select("#map").append("svg")
@@ -32,7 +31,6 @@ function createWorldMap(data) {
         const projection = d3.geoMercator().fitSize([width, height], topojson.feature(worldData, worldData.objects.countries));
         const path = d3.geoPath().projection(projection);
 
-        // Draw countries
         svg.append("g")
             .selectAll("path")
             .data(topojson.feature(worldData, worldData.objects.countries).features)
@@ -146,6 +144,9 @@ function createLineChart(data) {
 
 // Show country details on map click
 function showCountryDetails(countryName, data) {
-    const countryData = data.filter(d => d['Country name'] === countryName && d.year === 2020)[0];
-    alert(`Country: ${countryData['Country name']}\nLife Ladder: ${countryData['Life ladder']}\nLog GDP per Capita: ${countryData['Log GDP per capita']}\nSocial Support: ${countryData['Social support']}\nHealthy Life Expectancy: ${countryData['Healthy life expectancy at birth']}\nFreedom: ${countryData['Freedom to make life choices']}\nGenerosity: ${countryData.Generosity}\nPerceptions of Corruption: ${countryData['perceptions of corruption']}`);
+    const countryData = data.find(d => d['Country name'] === countryName && d.year === 2020);
+    if (countryData) {
+        alert(`Country: ${countryData['Country name']}\nLife Ladder: ${countryData['Life ladder']}\nLog GDP per Capita: ${countryData['Log GDP per capita']}\nSocial Support: ${countryData['Social support']}\nHealthy Life Expectancy: ${countryData['Healthy life expectancy at birth']}\nFreedom: ${countryData['Freedom to make life choices']}\nGenerosity: ${countryData.Generosity}\nPerceptions of Corruption: ${countryData['perceptions of corruption']}`);
+    }
 }
+
