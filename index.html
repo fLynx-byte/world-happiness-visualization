@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Happiness Overview</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>World Happiness Report</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-    <div id="visualization-container">
-        <h2>Global Happiness Overview</h2>
-        <div id="map"></div>
-        <p><a href="factors.html">See Factors Influencing Happiness</a></p>
-        <p><a href="trends.html">See Happiness Trends Over Time</a></p>
+<body onload="showHome()">
+    <div id="content">
+        <h1>World Happiness Report</h1>
+        <div id="description"></div>
+        <div id="chart"></div>
+        <div class="navigation">
+            <button onclick="showHome()">Home</button>
+            <button onclick="scene1()">Scene 1: GDP vs. Life Ladder</button>
+            <button onclick="scene2()">Scene 2: Social Support vs. Life Ladder</button>
+            <button onclick="scene3()">Scene 3: Freedom to Make Life Choices vs. Life Ladder</button>
+        </div>
     </div>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-        // Call the function to create the world map
-        d3.csv("data/world-happiness-report.csv").then(data => {
-            createWorldMap(data);
-        });
-    </script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://d3-annotation.susielu.com/"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/scene1.js"></script>
+    <script src="scripts/scene2.js"></script>
+    <script src="scripts/scene3.js"></script>
 </body>
 </html>
-
